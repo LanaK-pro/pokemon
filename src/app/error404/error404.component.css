@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300");
+
+#fonderror {
+  background: #3498db;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  position: fixed; /* Make the element fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999; /* High z-index to cover everything */
+}
+
+h1 {
+  font-size: 30vh;
+}
+
+h2 span {
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: #fff;
+}
+
+h3 a:hover {
+  text-decoration: none;
+  background: #fff;
+  color: #3498db;
+  cursor: pointer;
+}

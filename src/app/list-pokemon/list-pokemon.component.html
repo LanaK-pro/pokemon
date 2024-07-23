@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      @for (pokemon of pokemons; track pokemon.pokedex_id) {
+        <div *ngIf="visiblePokemonId !== pokemon.pokedex_id" class="card mb-3">
+          <div class="card-body">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <h5>{{ pokemon.name.fr }}</h5>
+              </li>
+              <li class="list-group-item">
+                <a
+                  routerLink="/pokemon-list/{{ pokemon.pokedex_id }}"
+                  class="btn btn-link"
+                >
+                  Details
+                </a>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  (click)="openModal(pokemon.pokedex_id)"
+                >
+                  Modal
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <button
+          (click)="toggleVisibility(pokemon.pokedex_id)"
+          class="btn btn-danger mb-3"
+        >
+          Supprimer
+        </button>
+
+        <div *ngIf="openModalId === pokemon.pokedex_id" class="modal-overlay">
+          <div
+            class="modal fade show d-block"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+            style="background-color: rgba(0, 0, 0, 0.5)"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    {{ pokemon.name.fr }}
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    (click)="closeModal()"
+                  ></button>
+                </div>
+                <div class="modal-body">...</div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    (click)="closeModal()"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

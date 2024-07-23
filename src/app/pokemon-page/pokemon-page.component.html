@@ -1,0 +1,44 @@
+<h2>{{ pokemon?.name?.fr }}</h2>
+<p>Pokedex id: {{ pokemon?.pokedex_id }}</p>
+<p>Pokemon de base</p>
+<img src="{{ pokemon?.sprites?.regular }}" alt="" />
+<div *ngIf="showInfos(pokemon?.sprites?.shiny)">
+  <p>Pokemon version shiny</p>
+  <img src="{{ pokemon?.sprites?.shiny }}" alt="" />
+</div>
+<div *ngIf="showInfos(pokemon?.sprites?.gmax)">
+  <p>Pokemon version gmax:</p>
+  <img src="{{ pokemon?.sprites?.gmax }}" alt="" />
+</div>
+@for (type of pokemon?.types; track pokemon?.pokedex_id) {
+  <p>{{ type.name }}</p>
+  <img src="{{ type.image }}" alt="" />
+}
+
+<div>
+  <h2>Stats</h2>
+  <p>Attaque: {{ pokemon?.stats?.atk }}</p>
+  <p>Defense: {{ pokemon?.stats?.def }}</p>
+  <p>HP: {{ pokemon?.stats?.hp }}</p>
+  <p>Vitesse: {{ pokemon?.stats?.vit }}</p>
+  <p>Spe atk: {{ pokemon?.stats?.spe_atk }}</p>
+  <p>Spe def: {{ pokemon?.stats?.spe_def }}</p>
+</div>
+
+<div>
+  <h2>Evolutions:</h2>
+  @for (pre of pokemon?.evolution?.pre; track pokemon?.pokedex_id) {
+    <p>Pré evolution pokedex id:{{ pre?.pokedex_id }}</p>
+    <p>Pré evolution nom:{{ pre?.name }}</p>
+    <p>Pré evolution condition:{{ pre?.condition }}</p>
+  }
+  <p>Next evolution pokedex id: {{ pokemon?.evolution?.next?.pokedex_id }}</p>
+  <p>Next evolution name: {{ pokemon?.evolution?.next?.name }}</p>
+  <p>Next evolution condition: {{ pokemon?.evolution?.next?.condition }}</p>
+
+  @for (mega of pokemon?.evolution?.mega; track pokemon?.pokedex_id) {
+    <p>Mega evolution orbe: {{ mega?.orbe }}</p>
+    <p>Mega evolution sprites: {{ mega?.sprites?.regular }}</p>
+    <p>Mega evolution shiny : {{ mega?.sprites?.shiny }}</p>
+  }
+</div>
