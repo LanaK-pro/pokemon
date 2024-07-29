@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { Ipokemon } from '../../shared/entities';
 import { PokemonService } from '../../shared/services/pokemon.service';
@@ -14,6 +14,7 @@ import { PokemonService } from '../../shared/services/pokemon.service';
 export class PokemonTeamComponent implements OnInit {
   pokemonTeam: Ipokemon[] = [];
 
+  // @Input() selectedPokemon: string;
   service = inject(PokemonService);
 
   ngOnInit(): void {

@@ -16,6 +16,9 @@ export class ListPokemonComponent implements OnInit {
   pokemons: Ipokemon[] = [];
   visiblePokemonId: number | null = null;
 
+  //Pokemon selectionée
+  selectedPokemon: string = '';
+
   service = inject(PokemonService);
   openModalId: number | null = null;
 

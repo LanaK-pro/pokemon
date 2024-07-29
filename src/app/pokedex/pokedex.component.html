@@ -1,1 +1,56 @@
-<p>pokedex works!</p>
+<div
+  class="container d-flex flex-column justify-content-center align-items-center vh-100"
+>
+  <h1 class="text-primary display-4">Pokedex</h1>
+
+  <div class="input-group mb-3 w-75">
+    <input
+      type="text"
+      class="form-control form-control-lg bg-primary text-white"
+      placeholder="Search"
+      [(ngModel)]="search"
+      (keyup)="onSearchStart()"
+    />
+  </div>
+
+  <ul class="list-group w-75" *ngIf="search">
+    <!--  <img
+      src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/af5cfba9-24eb-4818-ac9e-803eaf454c13/d3hwq5a-a40327c0-e10a-43bb-b15b-2296643ae29a.png/v1/fill/w_832,h_961/pokedex_by_neoncito_d3hwq5a-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA0MCIsInBhdGgiOiJcL2ZcL2FmNWNmYmE5LTI0ZWItNDgxOC1hYzllLTgwM2VhZjQ1NGMxM1wvZDNod3E1YS1hNDAzMjdjMC1lMTBhLTQzYmItYjE1Yi0yMjk2NjQzYWUyOWEucG5nIiwid2lkdGgiOiI8PTkwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.AeMP4DL44IhVwtzBYxId0qmsEl2AcjhFPZD4BSRl7ZM"
+      alt=""
+    />-->
+    <li
+      *ngFor="let pokemon of pokemons | search: search"
+      class="list-group-item d-flex justify-content-between align-items-center"
+    >
+      <h1 class="text-primary">{{ pokemon.name.fr }}</h1>
+      <img
+        src="{{ pokemon?.sprites?.regular }}"
+        alt=""
+        style="width: 200px; height: 200px"
+      />
+
+      <div class="d-flex flex-wrap">
+        <div *ngFor="let type of pokemon.types">
+          <h2>Types:</h2>
+          <p class="mb-1">{{ type.name }}</p>
+          <img
+            src="{{ type.image }}"
+            alt=""
+            class="img-thumbnail ms-2"
+            style="width: 50px; height: 50px"
+          />
+        </div>
+      </div>
+
+      <div class="ms-auto">
+        <h2>Stats</h2>
+        <p>Attaque: {{ pokemon?.stats?.atk }}</p>
+        <p>Defense: {{ pokemon?.stats?.def }}</p>
+        <p>HP: {{ pokemon?.stats?.hp }}</p>
+        <p>Vitesse: {{ pokemon?.stats?.vit }}</p>
+        <p>Spe atk: {{ pokemon?.stats?.spe_atk }}</p>
+        <p>Spe def: {{ pokemon?.stats?.spe_def }}</p>
+      </div>
+    </li>
+  </ul>
+</div>
