@@ -36,6 +36,8 @@
           Supprimer
         </button>
 
+        <button (click)="fetchData()">Add to team</button>
+
         <div *ngIf="openModalId === pokemon.pokedex_id" class="modal-overlay">
           <div
             class="modal fade show d-block"
