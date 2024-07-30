@@ -30,6 +30,15 @@
         </div>
 
         <button
+          (click)="selectPokemon(pokemon)"
+          [routerLink]="['/pokemon-team']"
+          [state]="pokemon"
+          class="btn btn-warning"
+        >
+          Ajouter à l'équipe
+        </button>
+
+        <button
           (click)="toggleVisibility(pokemon.pokedex_id)"
           class="btn btn-danger mb-3"
         >

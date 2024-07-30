@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { Ipokemon } from '../../shared/entities';
 import { PokemonService } from '../../shared/services/pokemon.service';
 import { Router, RouterLink } from '@angular/router';
@@ -8,7 +8,7 @@ import { PokemonTeamComponent } from '../pokemon-team/pokemon-team.component';
 @Component({
   selector: 'app-list-pokemon',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, PokemonTeamComponent],
   templateUrl: './list-pokemon.component.html',
   styleUrl: './list-pokemon.component.css',
 })
@@ -17,22 +17,15 @@ export class ListPokemonComponent implements OnInit {
   visiblePokemonId: number | null = null;
 
   //Pokemon selectionée
-  selectedPokemon: string = '';
+  selectedPokemon: any = '';
 
   service = inject(PokemonService);
   openModalId: number | null = null;
 
-  //Transfere d'un pokemon d'une page a l'autre
-
-  constructor(private router: Router) {}
-
-  sendToTeam() {
-    this.router.navigate([PokemonTeamComponent], {
-      state: {
-        description: 'You are in needed in b',
-        Label: 'B',
-      },
-    });
+  //Envoie le nom du Pokemon
+  selectPokemon(pokemonName: any) {
+    this.selectedPokemon = pokemonName;
+    console.log(this.selectedPokemon);
   }
 
   ngOnInit(): void {

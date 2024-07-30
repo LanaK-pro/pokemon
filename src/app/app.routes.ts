@@ -6,6 +6,7 @@ import { PokemonPageComponent } from './pokemon-page/pokemon-page.component';
 import { Error404Component } from './error404/error404.component';
 import { PokedexComponent } from './pokedex/pokedex.component';
 import { PokemonTeamComponent } from './pokemon-team/pokemon-team.component';
+import { ChartComponent } from './chart/chart.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,5 +15,7 @@ export const routes: Routes = [
   { path: 'pokemon-list/:id', component: PokemonPageComponent },
   { path: 'pokedex', component: PokedexComponent },
   { path: 'pokemon-team', component: PokemonTeamComponent },
+  { path: 'chart', component: ChartComponent },
+  //Met tous les autres liens avant sinon tu va avoir 404
   { path: '**', component: Error404Component },
 ];

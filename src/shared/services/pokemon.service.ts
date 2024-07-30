@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Ipokemon } from '../entities';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PokemonService {
   //URL de l'api
-  url = 'https://tyradex.tech/api/v1/pokemon';
+  url = environment.apiURL;
 
   //Ici tous les fonctions de CRUD
   constructor(private http: HttpClient) {}
